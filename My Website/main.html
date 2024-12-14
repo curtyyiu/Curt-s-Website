@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Worlds: The Power of Imagination</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define CSS Variables */
+        :root {
+            --main-color: #27ae60;
+            --secondary-color: #2ecc71;
+            --background-color: #eaf2f1;
+            --text-color: #34495e;
+            --header-background: #27ae60;
+            --footer-background: #16a085;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--background-color); /* Light Mint Green */
+            color: var(--text-color); /* Darker Greenish Text */
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 0 20px;
+            scroll-behavior: smooth; /* Smooth Scroll */
+        }
+
+        header {
+            background-color: var(--header-background); /* Strong Green */
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: padding 0.3s ease, font-size 0.3s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-family: 'Cinzel', cursive;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            animation: bounce 2s ease infinite;
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        h1:hover {
+            animation: glow-hover 1s ease-in-out infinite alternate;
+        }
+
+        /* Glowing Hover Effect */
+        @keyframes glow-hover {
+            0% {
+                text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--main-color);
+            }
+            100% {
+                text-shadow: 0 0 40px var(--secondary-color), 0 0 50px var(--main-color), 0 0 60px var(--secondary-color);
+            }
+        }
+
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 50px 20px;
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            background-color: #fff; /* White for contrast */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        section p {
+            font-size: 1.2rem;
+            color: var(--text-color); /* Slightly muted dark green */
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Back to Menu Button */
+        .back-button {
+            background-color: var(--main-color); /* Strong Green */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: var(--secondary-color); /* Lighter Green */
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--footer-background); /* Light Teal Green */
+            color: white;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        /* Parallax Section */
+        .parallax {
+            background: url('https://images.pexels.com/photos/1819650/pexels-photo-1819650.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            height: 50vh;
+            position: relative;
+            margin-top: 40px;
+            border-radius: 8px;
+            transition: background-position 0.3s ease-in-out;
+        }
+
+        .parallax h3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            section p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            section p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* New Styles for Platforms Section */
+        .platforms {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 40px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .platform {
+            width: 30%;
+            transition: all 0.3s ease;
+        }
+
+        .platform img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .platform img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .platform h3 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            color: var(--main-color);
+        }
+
+        .platform p {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            right: 20px;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Building Worlds: The Power of Imagination</h1>
+    <h2>Explore LEGO, Roblox, and Minecraft</h2>
+</header>
+
+<section id="platforms">
+    <h2>Choose Your Platform</h2>
+
+    <div class="platforms">
+        <div class="platform">
+            <img src="LEGO.webp" alt="LEGO">
+            <h3>LEGO</h3>
+            <p>LEGO is a toy construction system created in 1932 that allows users to build structures, vehicles, and creations using interlocking plastic bricks. It offers a wide range of sets, including themed collections like Star Wars, Harry Potter, and Ninjago. LEGO encourages creativity and imaginative play, allowing builders of all ages to create and explore various worlds. The colorful bricks also help develop fine motor skills and problem-solving abilities in children. With its enduring popularity, LEGO continues to be a beloved toy and creative tool for generations of builders.</p>
+            <a href="https://www.lego.com/en-us?consent-modal=show&age-gate=grown_up">Learn More about LEGO</a>
+        </div>
+        <div class="platform">
+            <img src="roblox.webp" alt="Roblox">
+            <h3>Roblox</h3>
+            <p>Roblox is an online gaming platform and game creation system launched in 2006. It allows users to create and share games created with the platform's unique development tools. Roblox features an expansive universe of virtual worlds, ranging from simple obstacle courses to detailed simulations of real-world activities. Players can customize their avatars and participate in multiplayer experiences with friends. The platform fosters creativity and collaboration, offering young developers the chance to learn coding and game design. Roblox continues to be a growing community with millions of active players.</p>
+            <a href="https://www.roblox.com/home">Learn More about Roblox</a>
+        </div>
+        <div class="platform">
+            <img src="minecraft.webp" alt="Minecraft">
+            <h3>Minecraft</h3>
+            <p>Minecraft is a sandbox video game created by Markus Persson and released in 2011. The game allows players to build and explore vast virtual worlds made up of blocks. Players can engage in a variety of activities, such as mining resources, crafting tools, and constructing elaborate structures. The game features multiple modes, including survival, where players must gather resources and fend off enemies, and creative, where they can freely build and experiment. Minecraft has become a cultural phenomenon, inspiring an entire community of creators who build everything from complex redstone contraptions to entire cities.</p>
+            <a href="https://www.minecraft.net/en-us">Learn More about Minecraft</a>
+        </div>
+    </div>
+</section>
+
+<!-- Back to Menu Button -->
+<a href="index.html" class="back-button">Back to Menu</a>
+
+<footer>
+    <p>&copy; 2024 Lovingly made by Curt Adrian J. Aninao. All rights reserved.</p>
+</footer>
+
+<script>
+    // Shrinking Header on Scroll
+    window.addEventListener("scroll", function() {
+        const header = document.querySelector('header');
+        const h1 = header.querySelector('h1');
+        const h2 = header.querySelector('h2');
+
+        if (window.scrollY > 1) {
+            header.style.padding = '20px 20px';
+            h1.style.fontSize = '2.5rem';
+            h2.style.fontSize = '1.5rem';
+        } else {
+            header.style.padding = '60px 20px';
+            h1.style.fontSize = '3rem';
+            h2.style.fontSize = '2rem';
+        }
+    });
+</script>
+
+</body>
+</html>
